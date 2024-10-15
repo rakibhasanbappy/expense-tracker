@@ -1,4 +1,5 @@
 import { useState } from "react";
+import getwrittenDate from "../helper/covertDate";
 
 import Filter from "./Filter";
 import Sort from "./Sort";
@@ -63,14 +64,19 @@ export default function Income({ incomeList }) {
         </div>
       </div>
 
-      {incomeList.map((income) => (
-        <div key={income.id} className="p-4 divide-y">
-          <div className="flex justify-between items-center py-2 relative group cursor-pointer">
+      <div className="p-4 divide-y">
+        {incomeList.map((income) => (
+          <div
+            key={income.id}
+            className="flex justify-between items-center py-2 relative group cursor-pointer"
+          >
             <div>
               <h3 className="text-base font-medium leading-7 text-gray-600">
                 {income.category}
               </h3>
-              <p className="text-xs text-gray-600">{income.date}</p>
+              <p className="text-xs text-gray-600">
+                {getwrittenDate(income.date)}
+              </p>
             </div>
             <div className="flex items-center gap-2">
               <p className="text-base font-semibold text-gray-600 transition-all group-hover:-translate-x-14">
@@ -96,8 +102,8 @@ export default function Income({ incomeList }) {
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

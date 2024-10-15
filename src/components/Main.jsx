@@ -48,8 +48,22 @@ export default function Main() {
 
     if (transactionData.type === "Income") {
       setIncome(income + parseInt(transactionData.amount));
+      setIncomeList([
+        ...incomeList,
+        {
+          id: crypto.randomUUID(),
+          ...transactionData,
+        },
+      ]);
     } else {
       setExpense(expense + parseInt(transactionData.amount));
+      setExpenseList([
+        ...expenseList,
+        {
+          id: crypto.randomUUID(),
+          ...transactionData,
+        },
+      ]);
     }
   }
 

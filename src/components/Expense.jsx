@@ -1,4 +1,5 @@
 import { useState } from "react";
+import getwrittenDate from "../helper/covertDate";
 import Filter from "./Filter";
 import Sort from "./Sort";
 import DeleteSvg from "./svg/DeleteSvg";
@@ -62,14 +63,19 @@ export default function Expense({ expenseList }) {
           </div>
         </div>
       </div>
-      {expenseList.map((expense) => (
-        <div key={expense.id} className="p-4 divide-y">
-          <div className="flex justify-between items-center py-2 relative group cursor-pointer">
+      <div className="p-4 divide-y">
+        {expenseList.map((expense) => (
+          <div
+            key={expense.id}
+            className="flex justify-between items-center py-2 relative group cursor-pointer"
+          >
             <div>
               <h3 className="text-base font-medium leading-7 text-gray-600">
                 {expense.category}
               </h3>
-              <p className="text-xs text-gray-600">{expense.date}</p>
+              <p className="text-xs text-gray-600">
+                {getwrittenDate(expense.date)}
+              </p>
             </div>
             <div className="flex items-center gap-2">
               <p className="text-base font-semibold text-gray-600 transition-all group-hover:-translate-x-14">
@@ -95,8 +101,8 @@ export default function Expense({ expenseList }) {
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
