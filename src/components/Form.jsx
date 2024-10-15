@@ -3,6 +3,8 @@ export default function Form({
   expenseSelected,
   onIncomeClick,
   onExpenseClick,
+  transactionData,
+  setTransactionData,
 }) {
   const incomeOptions = ["Salary", "Outsourcing", "Bond", "Dividend"];
   const expenseOptions = [
@@ -17,6 +19,18 @@ export default function Form({
   ];
 
   let options;
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setTransactionData({ ...transactionData, [name]: value });
+  };
+
+  const onSaveHandler = (e) => {
+    e.preventDefault();
+    console.log(transactionData);
+    console.log("Save button clicked");
+  };
 
   return (
     <>
@@ -56,6 +70,8 @@ export default function Form({
               <select
                 id="category"
                 name="category"
+                value={transactionData.category}
+                onChange={handleChange}
                 autoComplete="category-name"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
               >
@@ -80,6 +96,8 @@ export default function Form({
                 type="number"
                 name="amount"
                 id="amount"
+                value={transactionData.amount}
+                onChange={handleChange}
                 autoComplete="off"
                 placeholder="12931"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
@@ -99,6 +117,8 @@ export default function Form({
                 type="date"
                 name="date"
                 id="date"
+                value={transactionData.date}
+                onChange={handleChange}
                 autoComplete="off"
                 placeholder="12931"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
@@ -107,6 +127,7 @@ export default function Form({
           </div>
 
           <button
+            onClick={onSaveHandler}
             type="submit"
             className="mt-6 rounded-md bg-teal-600 px-8 py-2 text-sm font-semibold text-white shadow-sm hover:bg-teal-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 w-full"
           >

@@ -10,12 +10,31 @@ export default function Main() {
   const handleIncomeClick = () => {
     setIncomeSelected(true);
     setExpenseSelected(false);
+    setTransactionData({
+      ...transactionData,
+      type: "Income",
+      category: "Salary",
+    });
   };
 
   const handleExpenseClick = () => {
     setIncomeSelected(false);
     setExpenseSelected(true);
+    setTransactionData({
+      ...transactionData,
+      type: "Expense",
+      category: "Education",
+    });
   };
+
+  const transaction = {
+    type: incomeSelected ? "Income" : "Expense",
+    category: incomeSelected ? "Salary" : "Education",
+    amount: "",
+    date: "",
+  };
+
+  const [transactionData, setTransactionData] = useState(transaction);
 
   return (
     <>
@@ -26,6 +45,8 @@ export default function Main() {
             expenseSelected={expenseSelected}
             onIncomeClick={handleIncomeClick}
             onExpenseClick={handleExpenseClick}
+            transactionData={transactionData}
+            setTransactionData={setTransactionData}
           />
           <RightColumn />
         </section>
