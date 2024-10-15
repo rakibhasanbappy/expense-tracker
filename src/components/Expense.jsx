@@ -1,4 +1,3 @@
-import { useState } from "react";
 import getwrittenDate from "../helper/covertDate";
 import Filter from "./Filter";
 import Sort from "./Sort";
@@ -8,9 +7,13 @@ import ExpenseSvg from "./svg/ExpenseSvg";
 import FilterSvg from "./svg/FilterSvg";
 import SortSvg from "./svg/SortSvg";
 
-export default function Expense({ expenseList }) {
-  const [sortClicked, setSortClicked] = useState(false);
-  const [filterClicked, setFilterClicked] = useState(false);
+export default function Expense({
+  expenseList,
+  expenseSortClicked,
+  expenseFilterClicked,
+  onExpenseSortButton,
+  onExpenseFilterButton,
+}) {
   return (
     <div className="border rounded-md">
       <div className="flex items-center justify-between gap-2 bg-[#F9FAFB] py-4 px-4 rounded-md">
@@ -31,7 +34,10 @@ export default function Expense({ expenseList }) {
           <div className="relative inline-block text-left mr-1">
             <div>
               <button
-                onClick={() => setSortClicked(!sortClicked)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onExpenseSortButton();
+                }}
                 type="button"
                 className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-2 py-1 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                 id="menu-button2"
@@ -41,14 +47,17 @@ export default function Expense({ expenseList }) {
                 <SortSvg />
               </button>
             </div>
-            {sortClicked && <Sort />}
+            {expenseSortClicked && <Sort />}
           </div>
 
           {/* Filter Component */}
           <div className="relative inline-block text-left">
             <div>
               <button
-                onClick={() => setFilterClicked(!filterClicked)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onExpenseFilterButton();
+                }}
                 type="button"
                 className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-2 py-1 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                 id="filter-button-2"
@@ -59,7 +68,7 @@ export default function Expense({ expenseList }) {
               </button>
             </div>
 
-            {filterClicked && <Filter />}
+            {expenseFilterClicked && <Filter />}
           </div>
         </div>
       </div>

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import getwrittenDate from "../helper/covertDate";
 
 import Filter from "./Filter";
@@ -9,10 +8,13 @@ import FilterSvg from "./svg/FilterSvg";
 import IncomeSvg from "./svg/IncomeSvg";
 import SortSvg from "./svg/SortSvg";
 
-export default function Income({ incomeList }) {
-  const [sortClicked, setSortClicked] = useState(false);
-  const [filterClicked, setFilterClicked] = useState(false);
-
+export default function Income({
+  incomeList,
+  incomeSortClicked,
+  incomeFilterClicked,
+  onIncomeSortButton,
+  onIncomeFilterButton,
+}) {
   return (
     <div className="border rounded-md relative">
       <div className="flex items-center justify-between gap-2 bg-[#F9FAFB] py-4 px-4 rounded-md">
@@ -31,7 +33,10 @@ export default function Income({ incomeList }) {
           <div className="relative inline-block text-left mr-1">
             <div>
               <button
-                onClick={() => setSortClicked(!sortClicked)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onIncomeSortButton();
+                }}
                 type="button"
                 className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-2 py-1 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                 id="menu-button"
@@ -42,13 +47,16 @@ export default function Income({ incomeList }) {
               </button>
             </div>
 
-            {sortClicked && <Sort />}
+            {incomeSortClicked && <Sort />}
           </div>
 
           <div className="relative inline-block text-left">
             <div>
               <button
-                onClick={() => setFilterClicked(!filterClicked)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onIncomeFilterButton();
+                }}
                 type="button"
                 className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-2 py-1 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                 id="filter-button"
@@ -59,7 +67,7 @@ export default function Income({ incomeList }) {
               </button>
             </div>
 
-            {filterClicked && <Filter />}
+            {incomeFilterClicked && <Filter />}
           </div>
         </div>
       </div>

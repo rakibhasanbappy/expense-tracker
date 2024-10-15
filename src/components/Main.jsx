@@ -3,7 +3,16 @@ import RightColumn from "./RightColumn";
 
 import { useState } from "react";
 
-export default function Main() {
+export default function Main({
+  incomeSortClicked,
+  setIncomeSortClicked,
+  incomeFilterClicked,
+  setIncomeFilterClicked,
+  expenseSortClicked,
+  setExpenseSortClicked,
+  expenseFilterClicked,
+  setExpenseFilterClicked,
+}) {
   const [incomeSelected, setIncomeSelected] = useState(false);
   const [expenseSelected, setExpenseSelected] = useState(true);
   const [income, setIncome] = useState(0);
@@ -85,6 +94,14 @@ export default function Main() {
             expense={expense}
             incomeList={incomeList}
             expenseList={expenseList}
+            incomeSortClicked={incomeSortClicked}
+            setIncomeSortClicked={setIncomeSortClicked}
+            incomeFilterClicked={incomeFilterClicked}
+            setIncomeFilterClicked={setIncomeFilterClicked}
+            expenseSortClicked={expenseSortClicked}
+            setExpenseSortClicked={setExpenseSortClicked}
+            expenseFilterClicked={expenseFilterClicked}
+            setExpenseFilterClicked={setExpenseFilterClicked}
           />
         </section>
       </main>
