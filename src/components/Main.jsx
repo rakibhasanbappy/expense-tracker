@@ -6,6 +6,10 @@ import { useState } from "react";
 export default function Main() {
   const [incomeSelected, setIncomeSelected] = useState(false);
   const [expenseSelected, setExpenseSelected] = useState(true);
+  const [income, setIncome] = useState(0);
+  const [expense, setExpense] = useState(0);
+  const [incomeList, setIncomeList] = useState([]);
+  const [expenseList, setExpenseList] = useState([]);
 
   const handleIncomeClick = () => {
     setIncomeSelected(true);
@@ -36,6 +40,19 @@ export default function Main() {
 
   const [transactionData, setTransactionData] = useState(transaction);
 
+  function handleSave() {
+    if (transactionData.amount === "" || transactionData.date === "") {
+      alert("Please fill all the fields");
+      return;
+    }
+
+    if (transactionData.type === "Income") {
+      setIncome(income + parseInt(transactionData.amount));
+    } else {
+      setExpense(expense + parseInt(transactionData.amount));
+    }
+  }
+
   return (
     <>
       <main className="relative mx-auto mt-10 w-full max-w-7xl">
@@ -47,8 +64,14 @@ export default function Main() {
             onExpenseClick={handleExpenseClick}
             transactionData={transactionData}
             setTransactionData={setTransactionData}
+            onSave={handleSave}
           />
-          <RightColumn />
+          <RightColumn
+            income={income}
+            expense={expense}
+            incomeList={incomeList}
+            expenseList={expenseList}
+          />
         </section>
       </main>
     </>

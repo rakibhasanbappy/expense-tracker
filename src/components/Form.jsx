@@ -5,6 +5,7 @@ export default function Form({
   onExpenseClick,
   transactionData,
   setTransactionData,
+  onSave,
 }) {
   const incomeOptions = ["Salary", "Outsourcing", "Bond", "Dividend"];
   const expenseOptions = [
@@ -28,8 +29,7 @@ export default function Form({
 
   const onSaveHandler = (e) => {
     e.preventDefault();
-    console.log(transactionData);
-    console.log("Save button clicked");
+    onSave();
   };
 
   return (
@@ -120,7 +120,6 @@ export default function Form({
                 value={transactionData.date}
                 onChange={handleChange}
                 autoComplete="off"
-                placeholder="12931"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
               />
             </div>
