@@ -4,6 +4,8 @@ import Income from "./Income";
 export default function ListDown({
   incomeList,
   expenseList,
+  setIncomeList,
+  setExpenseList,
   incomeSortClicked,
   setIncomeSortClicked,
   incomeFilterClicked,
@@ -57,6 +59,7 @@ export default function ListDown({
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-8">
       <Income
         incomeList={incomeList}
+        setIncomeList={setIncomeList}
         incomeSortClicked={incomeSortClicked}
         incomeFilterClicked={incomeFilterClicked}
         onIncomeSortButton={toggleIncomeSortButton}
@@ -64,6 +67,7 @@ export default function ListDown({
       />
       <Expense
         expenseList={expenseList}
+        setExpenseList={setExpenseList}
         expenseSortClicked={expenseSortClicked}
         expenseFilterClicked={expenseFilterClicked}
         onExpenseSortButton={toggleExpenseSortButton}

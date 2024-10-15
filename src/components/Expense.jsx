@@ -9,6 +9,7 @@ import SortSvg from "./svg/SortSvg";
 
 export default function Expense({
   expenseList,
+  setExpenseList,
   expenseSortClicked,
   expenseFilterClicked,
   onExpenseSortButton,
@@ -47,7 +48,13 @@ export default function Expense({
                 <SortSvg />
               </button>
             </div>
-            {expenseSortClicked && <Sort />}
+            {expenseSortClicked && (
+              <Sort
+                sort={"Expense"}
+                expenseList={expenseList}
+                setExpenseList={setExpenseList}
+              />
+            )}
           </div>
 
           {/* Filter Component */}

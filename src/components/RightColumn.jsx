@@ -6,6 +6,8 @@ export default function RightColumn({
   expense,
   incomeList,
   expenseList,
+  setIncomeList,
+  setExpenseList,
   incomeSortClicked,
   setIncomeSortClicked,
   incomeFilterClicked,
@@ -21,6 +23,8 @@ export default function RightColumn({
       <ListDown
         incomeList={incomeList}
         expenseList={expenseList}
+        setIncomeList={setIncomeList}
+        setExpenseList={setExpenseList}
         incomeSortClicked={incomeSortClicked}
         setIncomeSortClicked={setIncomeSortClicked}
         incomeFilterClicked={incomeFilterClicked}

@@ -10,6 +10,7 @@ import SortSvg from "./svg/SortSvg";
 
 export default function Income({
   incomeList,
+  setIncomeList,
   incomeSortClicked,
   incomeFilterClicked,
   onIncomeSortButton,
@@ -47,7 +48,13 @@ export default function Income({
               </button>
             </div>
 
-            {incomeSortClicked && <Sort />}
+            {incomeSortClicked && (
+              <Sort
+                sort={"Income"}
+                incomeList={incomeList}
+                setIncomeList={setIncomeList}
+              />
+            )}
           </div>
 
           <div className="relative inline-block text-left">

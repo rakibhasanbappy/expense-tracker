@@ -1,4 +1,30 @@
-export default function Sort() {
+export default function Sort({
+  sort,
+  incomeList,
+  setIncomeList,
+  expenseList,
+  setExpenseList,
+}) {
+  function low_to_high() {
+    if (sort === "Income") {
+      const sortedList = incomeList.sort((a, b) => a.amount - b.amount);
+      setIncomeList([...sortedList]);
+    } else {
+      const sortedList = expenseList.sort((a, b) => a.amount - b.amount);
+      setExpenseList([...sortedList]);
+    }
+  }
+
+  function high_to_low() {
+    if (sort === "Income") {
+      const sortedList = incomeList.sort((a, b) => b.amount - a.amount);
+      setIncomeList([...sortedList]);
+    } else {
+      const sortedList = expenseList.sort((a, b) => b.amount - a.amount);
+      setExpenseList([...sortedList]);
+    }
+  }
+
   return (
     <>
       <div
@@ -10,6 +36,7 @@ export default function Sort() {
       >
         <div className="py-1" role="none">
           <a
+            onClick={low_to_high}
             href="#"
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-all"
             role="menuitem"
@@ -19,6 +46,7 @@ export default function Sort() {
             Low to High
           </a>
           <a
+            onClick={high_to_low}
             href="#"
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-all"
             role="menuitem"

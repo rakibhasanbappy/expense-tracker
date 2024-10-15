@@ -94,6 +94,8 @@ export default function Main({
             expense={expense}
             incomeList={incomeList}
             expenseList={expenseList}
+            setIncomeList={setIncomeList}
+            setExpenseList={setExpenseList}
             incomeSortClicked={incomeSortClicked}
             setIncomeSortClicked={setIncomeSortClicked}
             incomeFilterClicked={incomeFilterClicked}
