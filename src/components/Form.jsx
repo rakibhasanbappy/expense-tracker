@@ -1,4 +1,23 @@
-export default function Form() {
+export default function Form({
+  incomeSelected,
+  expenseSelected,
+  onIncomeClick,
+  onExpenseClick,
+}) {
+  const incomeOptions = ["Salary", "Outsourcing", "Bond", "Dividend"];
+  const expenseOptions = [
+    "Education",
+    "Food",
+    "Health",
+    "Bill",
+    "Insurance",
+    "Tax",
+    "Transport",
+    "Telephone",
+  ];
+
+  let options;
+
   return (
     <>
       <div className="p-6 py-8 bg-[#F9FAFB] border rounded-md">
@@ -8,10 +27,20 @@ export default function Form() {
 
         <form>
           <div className="flex divide-x divide-slate-400/20 overflow-hidden rounded-md bg-white text-[0.8125rem] font-medium leading-5 text-slate-700 shadow-sm ring-1 ring-slate-700/10 mt-6">
-            <div className="cursor-pointer text-center flex-1 px-4 py-2 hover:bg-slate-50 hover:text-slate-900 active">
+            <div
+              onClick={onExpenseClick}
+              className={`cursor-pointer text-center flex-1 px-4 py-2 hover:bg-slate-50 hover:text-slate-900 ${
+                expenseSelected ? "active" : ""
+              }`}
+            >
               Expense
             </div>
-            <div className="cursor-pointer text-center flex-1 px-4 py-2 hover:bg-slate-50 hover:text-slate-900">
+            <div
+              onClick={onIncomeClick}
+              className={`cursor-pointer text-center flex-1 px-4 py-2 hover:bg-slate-50 hover:text-slate-900 ${
+                incomeSelected ? "active" : ""
+              }`}
+            >
               Income
             </div>
           </div>
@@ -30,14 +59,11 @@ export default function Form() {
                 autoComplete="category-name"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
               >
-                <option>Education</option>
-                <option>Food</option>
-                <option>Health</option>
-                <option>Bill</option>
-                <option>Insurance</option>
-                <option>Tax</option>
-                <option>Transport</option>
-                <option>Telephone</option>
+                {(options = incomeSelected ? incomeOptions : expenseOptions)}
+
+                {options.map((option) => (
+                  <option key={option}>{option}</option>
+                ))}
               </select>
             </div>
           </div>
