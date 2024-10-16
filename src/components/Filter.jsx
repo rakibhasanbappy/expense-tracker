@@ -1,4 +1,8 @@
-export default function Filter({ filterOptions }) {
+export default function Filter({
+  filterOptions,
+  handleCheckboxChange,
+  filterSelected,
+}) {
   return (
     <>
       <div
@@ -16,7 +20,8 @@ export default function Filter({ filterOptions }) {
               className="inline-flex items-center px-4 py-2 text-sm text-gray-700"
             >
               <input
-                onClick={(e) => e.stopPropagation()}
+                checked={filterSelected.includes(option)}
+                onClick={(e) => handleCheckboxChange(e)}
                 type="checkbox"
                 className="form-checkbox h-4 w-4 rounded-md text-gray-600"
                 id={option}

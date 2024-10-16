@@ -20,6 +20,10 @@ export default function RightColumn({
   setExpenseSortClicked,
   expenseFilterClicked,
   setExpenseFilterClicked,
+  incomeSelectedFilters,
+  setIncomeSelectedFilters,
+  expenseSelectedFilters,
+  setExpenseSelectedFilters,
 }) {
   return (
     <div className="lg:col-span-2">
@@ -41,6 +45,10 @@ export default function RightColumn({
         setExpenseSortClicked={setExpenseSortClicked}
         expenseFilterClicked={expenseFilterClicked}
         setExpenseFilterClicked={setExpenseFilterClicked}
+        incomeSelectedFilters={incomeSelectedFilters}
+        setIncomeSelectedFilters={setIncomeSelectedFilters}
+        expenseSelectedFilters={expenseSelectedFilters}
+        setExpenseSelectedFilters={setExpenseSelectedFilters}
       />
     </div>
   );

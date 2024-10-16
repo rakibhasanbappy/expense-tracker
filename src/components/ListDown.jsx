@@ -18,6 +18,10 @@ export default function ListDown({
   setExpenseSortClicked,
   expenseFilterClicked,
   setExpenseFilterClicked,
+  incomeSelectedFilters,
+  setIncomeSelectedFilters,
+  expenseSelectedFilters,
+  setExpenseSelectedFilters,
 }) {
   function toggleIncomeSortButton() {
     setIncomeSortClicked(!incomeSortClicked);
@@ -71,6 +75,8 @@ export default function ListDown({
         incomeFilterClicked={incomeFilterClicked}
         onIncomeSortButton={toggleIncomeSortButton}
         onIncomeFilterButton={toggleIncomeFilterButton}
+        incomeSelectedFilters={incomeSelectedFilters}
+        setIncomeSelectedFilters={setIncomeSelectedFilters}
       />
       <Expense
         expenseList={expenseList}
@@ -82,6 +88,8 @@ export default function ListDown({
         expenseFilterClicked={expenseFilterClicked}
         onExpenseSortButton={toggleExpenseSortButton}
         onExpenseFilterButton={toggleExpenseFilterButton}
+        expenseSelectedFilters={expenseSelectedFilters}
+        setExpenseSelectedFilters={setExpenseSelectedFilters}
       />
     </div>
   );

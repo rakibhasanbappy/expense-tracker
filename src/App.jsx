@@ -9,6 +9,10 @@ export default function App() {
   const [expenseSortClicked, setExpenseSortClicked] = useState(false);
   const [expenseFilterClicked, setExpenseFilterClicked] = useState(false);
 
+  // state to store the selected filter options
+  const [incomeSelectedFilters, setIncomeSelectedFilters] = useState([]);
+  const [expenseSelectedFilters, setExpenseSelectedFilters] = useState([]);
+
   function handleOnClick() {
     if (
       incomeSortClicked ||
@@ -35,6 +39,10 @@ export default function App() {
         setExpenseSortClicked={setExpenseSortClicked}
         expenseFilterClicked={expenseFilterClicked}
         setExpenseFilterClicked={setExpenseFilterClicked}
+        incomeSelectedFilters={incomeSelectedFilters}
+        setIncomeSelectedFilters={setIncomeSelectedFilters}
+        expenseSelectedFilters={expenseSelectedFilters}
+        setExpenseSelectedFilters={setExpenseSelectedFilters}
       />
     </div>
   );

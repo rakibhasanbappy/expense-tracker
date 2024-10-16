@@ -17,7 +17,31 @@ export default function Expense({
   expenseFilterClicked,
   onExpenseSortButton,
   onExpenseFilterButton,
+  expenseSelectedFilters,
+  setExpenseSelectedFilters,
 }) {
+  // function to handle the checkbox change event
+  const handleCheckboxChange = (e) => {
+    e.stopPropagation();
+
+    if (e.target.checked) {
+      setExpenseSelectedFilters([...expenseSelectedFilters, e.target.id]);
+    } else {
+      setExpenseSelectedFilters(
+        expenseSelectedFilters.filter((filter) => filter !== e.target.id)
+      );
+    }
+  };
+
+  // filter the income list based on the selected filters
+  if (expenseSelectedFilters.length > 0) {
+    const filteredExpenseList = expenseList.filter((expense) =>
+      expenseSelectedFilters.includes(expense.category)
+    );
+
+    expenseList = filteredExpenseList;
+  }
+
   return (
     <div className="border rounded-md">
       <div className="flex items-center justify-between gap-2 bg-[#F9FAFB] py-4 px-4 rounded-md">
@@ -78,7 +102,13 @@ export default function Expense({
               </button>
             </div>
 
-            {expenseFilterClicked && <Filter filterOptions={expenseOptions} />}
+            {expenseFilterClicked && (
+              <Filter
+                filterOptions={expenseOptions}
+                handleCheckboxChange={handleCheckboxChange}
+                filterSelected={expenseSelectedFilters}
+              />
+            )}
           </div>
         </div>
       </div>

@@ -12,6 +12,10 @@ export default function Main({
   setExpenseSortClicked,
   expenseFilterClicked,
   setExpenseFilterClicked,
+  incomeSelectedFilters,
+  setIncomeSelectedFilters,
+  expenseSelectedFilters,
+  setExpenseSelectedFilters,
 }) {
   const [incomeSelected, setIncomeSelected] = useState(false);
   const [expenseSelected, setExpenseSelected] = useState(true);
@@ -216,6 +220,10 @@ export default function Main({
             setExpenseSortClicked={setExpenseSortClicked}
             expenseFilterClicked={expenseFilterClicked}
             setExpenseFilterClicked={setExpenseFilterClicked}
+            incomeSelectedFilters={incomeSelectedFilters}
+            setIncomeSelectedFilters={setIncomeSelectedFilters}
+            expenseSelectedFilters={expenseSelectedFilters}
+            setExpenseSelectedFilters={setExpenseSelectedFilters}
           />
         </section>
       </main>

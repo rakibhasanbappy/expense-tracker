@@ -18,7 +18,31 @@ export default function Income({
   incomeFilterClicked,
   onIncomeSortButton,
   onIncomeFilterButton,
+  incomeSelectedFilters,
+  setIncomeSelectedFilters,
 }) {
+  // function to handle the checkbox change event
+  const handleCheckboxChange = (e) => {
+    e.stopPropagation();
+
+    if (e.target.checked) {
+      setIncomeSelectedFilters([...incomeSelectedFilters, e.target.id]);
+    } else {
+      setIncomeSelectedFilters(
+        incomeSelectedFilters.filter((filter) => filter !== e.target.id)
+      );
+    }
+  };
+
+  // filter the income list based on the selected filters
+  if (incomeSelectedFilters.length > 0) {
+    const filteredIncomeList = incomeList.filter((income) =>
+      incomeSelectedFilters.includes(income.category)
+    );
+
+    incomeList = filteredIncomeList;
+  }
+
   return (
     <div className="border rounded-md relative">
       <div className="flex items-center justify-between gap-2 bg-[#F9FAFB] py-4 px-4 rounded-md">
@@ -77,7 +101,13 @@ export default function Income({
               </button>
             </div>
 
-            {incomeFilterClicked && <Filter filterOptions={incomeOptions} />}
+            {incomeFilterClicked && (
+              <Filter
+                filterOptions={incomeOptions}
+                handleCheckboxChange={handleCheckboxChange}
+                filterSelected={incomeSelectedFilters}
+              />
+            )}
           </div>
         </div>
       </div>
