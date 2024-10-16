@@ -11,6 +11,7 @@ import SortSvg from "./svg/SortSvg";
 export default function Income({
   incomeList,
   setIncomeList,
+  onEditClick,
   incomeSortClicked,
   incomeFilterClicked,
   onIncomeSortButton,
@@ -103,6 +104,7 @@ export default function Income({
                   className="hover:text-teal-600"
                   role="button"
                   title="Edit"
+                  onClick={() => onEditClick(income)}
                 >
                   <EditSvg />
                 </button>

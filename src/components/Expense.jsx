@@ -10,6 +10,7 @@ import SortSvg from "./svg/SortSvg";
 export default function Expense({
   expenseList,
   setExpenseList,
+  onEditClick,
   expenseSortClicked,
   expenseFilterClicked,
   onExpenseSortButton,
@@ -103,6 +104,7 @@ export default function Expense({
                   className="hover:text-teal-600"
                   role="button"
                   title="Edit"
+                  onClick={() => onEditClick(expense)}
                 >
                   <EditSvg />
                 </button>

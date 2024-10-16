@@ -8,6 +8,7 @@ export default function RightColumn({
   expenseList,
   setIncomeList,
   setExpenseList,
+  onEditClick,
   incomeSortClicked,
   setIncomeSortClicked,
   incomeFilterClicked,
@@ -25,6 +26,7 @@ export default function RightColumn({
         expenseList={expenseList}
         setIncomeList={setIncomeList}
         setExpenseList={setExpenseList}
+        onEditClick={onEditClick}
         incomeSortClicked={incomeSortClicked}
         setIncomeSortClicked={setIncomeSortClicked}
         incomeFilterClicked={incomeFilterClicked}

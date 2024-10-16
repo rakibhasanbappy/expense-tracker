@@ -19,6 +19,7 @@ export default function Main({
   const [expense, setExpense] = useState(0);
   const [incomeList, setIncomeList] = useState([]);
   const [expenseList, setExpenseList] = useState([]);
+  const [editedAmount, setEditedAmount] = useState(0);
 
   const handleIncomeClick = () => {
     setIncomeSelected(true);
@@ -55,6 +56,59 @@ export default function Main({
       return;
     }
 
+    // this is for editing the transaction
+    if (transactionData.id) {
+      // search in the income list first
+      const index = incomeList.findIndex(
+        (income) => income.id === transactionData.id
+      );
+
+      if (index !== -1) {
+        // if the transaction type is changed from income to expense
+        if (transactionData.type === "Expense") {
+          const newIncomeList = incomeList.filter(
+            (income) => income.id !== transactionData.id
+          );
+          setIncomeList(newIncomeList);
+          setIncome(income - editedAmount);
+          setExpense(expense + parseInt(transactionData.amount));
+          setExpenseList([...expenseList, transactionData]);
+          setTransactionData(transaction);
+          return;
+        }
+        const newIncomeList = [...incomeList];
+        newIncomeList[index] = transactionData;
+        setIncomeList(newIncomeList);
+        setIncome(income + parseInt(transactionData.amount) - editedAmount);
+      } else {
+        // search in the expense list
+        const index = expenseList.findIndex(
+          (expense) => expense.id === transactionData.id
+        );
+
+        if (index !== -1) {
+          // if the transaction type is changed from expense to income
+          if (transactionData.type === "Income") {
+            const newExpenseList = expenseList.filter(
+              (expense) => expense.id !== transactionData.id
+            );
+            setExpenseList(newExpenseList);
+            setExpense(expense - editedAmount);
+            setIncome(income + parseInt(transactionData.amount));
+            setIncomeList([...incomeList, transactionData]);
+            setTransactionData(transaction);
+            return;
+          }
+          const newExpenseList = [...expenseList];
+          newExpenseList[index] = transactionData;
+          setExpenseList(newExpenseList);
+          setExpense(expense + parseInt(transactionData.amount) - editedAmount);
+        }
+      }
+      setTransactionData(transaction);
+      return;
+    }
+
     if (transactionData.type === "Income") {
       setIncome(income + parseInt(transactionData.amount));
       setIncomeList([
@@ -74,7 +128,38 @@ export default function Main({
         },
       ]);
     }
+    setTransactionData(transaction);
   }
+
+  function handleEditClick(transaction) {
+    if (transaction.type === "Income") {
+      setIncomeSelected(true);
+      setExpenseSelected(false);
+    } else {
+      setIncomeSelected(false);
+      setExpenseSelected(true);
+    }
+
+    setTransactionData(transaction);
+
+    setEditedAmount(parseInt(transaction.amount));
+  }
+
+  // function handleDeleteClick(transaction) {
+  //   if (transaction.type === "Income") {
+  //     const newIncomeList = incomeList.filter(
+  //       (income) => income.id !== transaction.id
+  //     );
+  //     setIncomeList(newIncomeList);
+  //     setIncome(income - parseInt(transaction.amount));
+  //   } else {
+  //     const newExpenseList = expenseList.filter(
+  //       (expense) => expense.id !== transaction.id
+  //     );
+  //     setExpenseList(newExpenseList);
+  //     setExpense(expense - parseInt(transaction.amount));
+  //   }
+  // }
 
   return (
     <>
@@ -96,6 +181,7 @@ export default function Main({
             expenseList={expenseList}
             setIncomeList={setIncomeList}
             setExpenseList={setExpenseList}
+            onEditClick={handleEditClick}
             incomeSortClicked={incomeSortClicked}
             setIncomeSortClicked={setIncomeSortClicked}
             incomeFilterClicked={incomeFilterClicked}
