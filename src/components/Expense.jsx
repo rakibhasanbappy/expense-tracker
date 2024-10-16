@@ -11,6 +11,7 @@ export default function Expense({
   expenseList,
   setExpenseList,
   onEditClick,
+  onDeleteClick,
   expenseSortClicked,
   expenseFilterClicked,
   onExpenseSortButton,
@@ -113,6 +114,7 @@ export default function Expense({
                   className="hover:text-red-600"
                   role="button"
                   title="Delete"
+                  onClick={() => onDeleteClick(expense)}
                 >
                   <DeleteSvg />
                 </button>

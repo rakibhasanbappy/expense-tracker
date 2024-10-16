@@ -12,6 +12,7 @@ export default function Income({
   incomeList,
   setIncomeList,
   onEditClick,
+  onDeleteClick,
   incomeSortClicked,
   incomeFilterClicked,
   onIncomeSortButton,
@@ -113,6 +114,7 @@ export default function Income({
                   className="hover:text-red-600"
                   role="button"
                   title="Delete"
+                  onClick={() => onDeleteClick(income)}
                 >
                   <DeleteSvg />
                 </button>

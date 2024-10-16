@@ -145,21 +145,25 @@ export default function Main({
     setEditedAmount(parseInt(transaction.amount));
   }
 
-  // function handleDeleteClick(transaction) {
-  //   if (transaction.type === "Income") {
-  //     const newIncomeList = incomeList.filter(
-  //       (income) => income.id !== transaction.id
-  //     );
-  //     setIncomeList(newIncomeList);
-  //     setIncome(income - parseInt(transaction.amount));
-  //   } else {
-  //     const newExpenseList = expenseList.filter(
-  //       (expense) => expense.id !== transaction.id
-  //     );
-  //     setExpenseList(newExpenseList);
-  //     setExpense(expense - parseInt(transaction.amount));
-  //   }
-  // }
+  function handleDeleteClick(transaction) {
+    if (!window.confirm("Are you sure you want to delete this transaction?")) {
+      return;
+    }
+
+    if (transaction.type === "Income") {
+      const newIncomeList = incomeList.filter(
+        (income) => income.id !== transaction.id
+      );
+      setIncomeList(newIncomeList);
+      setIncome(income - parseInt(transaction.amount));
+    } else {
+      const newExpenseList = expenseList.filter(
+        (expense) => expense.id !== transaction.id
+      );
+      setExpenseList(newExpenseList);
+      setExpense(expense - parseInt(transaction.amount));
+    }
+  }
 
   return (
     <>
@@ -182,6 +186,7 @@ export default function Main({
             setIncomeList={setIncomeList}
             setExpenseList={setExpenseList}
             onEditClick={handleEditClick}
+            onDeleteClick={handleDeleteClick}
             incomeSortClicked={incomeSortClicked}
             setIncomeSortClicked={setIncomeSortClicked}
             incomeFilterClicked={incomeFilterClicked}
