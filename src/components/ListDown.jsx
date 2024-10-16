@@ -6,6 +6,8 @@ export default function ListDown({
   expenseList,
   setIncomeList,
   setExpenseList,
+  incomeOptions,
+  expenseOptions,
   onEditClick,
   onDeleteClick,
   incomeSortClicked,
@@ -62,6 +64,7 @@ export default function ListDown({
       <Income
         incomeList={incomeList}
         setIncomeList={setIncomeList}
+        incomeOptions={incomeOptions}
         onEditClick={onEditClick}
         onDeleteClick={onDeleteClick}
         incomeSortClicked={incomeSortClicked}
@@ -72,6 +75,7 @@ export default function ListDown({
       <Expense
         expenseList={expenseList}
         setExpenseList={setExpenseList}
+        expenseOptions={expenseOptions}
         onEditClick={onEditClick}
         onDeleteClick={onDeleteClick}
         expenseSortClicked={expenseSortClicked}

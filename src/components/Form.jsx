@@ -1,24 +1,14 @@
 export default function Form({
   incomeSelected,
   expenseSelected,
+  incomeOptions,
+  expenseOptions,
   onIncomeClick,
   onExpenseClick,
   transactionData,
   setTransactionData,
   onSave,
 }) {
-  const incomeOptions = ["Salary", "Outsourcing", "Bond", "Dividend"];
-  const expenseOptions = [
-    "Education",
-    "Food",
-    "Health",
-    "Bill",
-    "Insurance",
-    "Tax",
-    "Transport",
-    "Telephone",
-  ];
-
   let options;
 
   const handleChange = (e) => {

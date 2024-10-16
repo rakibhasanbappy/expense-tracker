@@ -11,6 +11,7 @@ import SortSvg from "./svg/SortSvg";
 export default function Income({
   incomeList,
   setIncomeList,
+  incomeOptions,
   onEditClick,
   onDeleteClick,
   incomeSortClicked,
@@ -76,7 +77,7 @@ export default function Income({
               </button>
             </div>
 
-            {incomeFilterClicked && <Filter />}
+            {incomeFilterClicked && <Filter filterOptions={incomeOptions} />}
           </div>
         </div>
       </div>

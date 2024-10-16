@@ -6,6 +6,8 @@ export default function RightColumn({
   expense,
   incomeList,
   expenseList,
+  incomeOptions,
+  expenseOptions,
   setIncomeList,
   setExpenseList,
   onEditClick,
@@ -25,6 +27,8 @@ export default function RightColumn({
       <ListDown
         incomeList={incomeList}
         expenseList={expenseList}
+        incomeOptions={incomeOptions}
+        expenseOptions={expenseOptions}
         setIncomeList={setIncomeList}
         setExpenseList={setExpenseList}
         onEditClick={onEditClick}

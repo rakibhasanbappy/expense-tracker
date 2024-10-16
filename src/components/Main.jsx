@@ -21,6 +21,18 @@ export default function Main({
   const [expenseList, setExpenseList] = useState([]);
   const [editedAmount, setEditedAmount] = useState(0);
 
+  const incomeOptions = ["Salary", "Outsourcing", "Bond", "Dividend"];
+  const expenseOptions = [
+    "Education",
+    "Food",
+    "Health",
+    "Bill",
+    "Insurance",
+    "Tax",
+    "Transport",
+    "Telephone",
+  ];
+
   const handleIncomeClick = () => {
     setIncomeSelected(true);
     setExpenseSelected(false);
@@ -172,6 +184,8 @@ export default function Main({
           <Form
             incomeSelected={incomeSelected}
             expenseSelected={expenseSelected}
+            incomeOptions={incomeOptions}
+            expenseOptions={expenseOptions}
             onIncomeClick={handleIncomeClick}
             onExpenseClick={handleExpenseClick}
             transactionData={transactionData}
@@ -181,6 +195,8 @@ export default function Main({
           <RightColumn
             income={income}
             expense={expense}
+            incomeOptions={incomeOptions}
+            expenseOptions={expenseOptions}
             incomeList={incomeList}
             expenseList={expenseList}
             setIncomeList={setIncomeList}
