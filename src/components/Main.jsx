@@ -68,6 +68,11 @@ export default function Main({
       return;
     }
 
+    if (transactionData.amount < 0) {
+      alert("Amount cannot be negative");
+      return;
+    }
+
     // this is for editing the transaction
     if (transactionData.id) {
       // search in the income list first
