@@ -113,6 +113,9 @@ export default function Income({
       </div>
 
       <div className="p-4 divide-y">
+        {incomeList.length === 0 && (
+          <div className="text-center text-gray-600">No Incomes yet!</div>
+        )}
         {incomeList.map((income) => (
           <div
             key={income.id}

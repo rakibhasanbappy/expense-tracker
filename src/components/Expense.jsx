@@ -113,6 +113,9 @@ export default function Expense({
         </div>
       </div>
       <div className="p-4 divide-y">
+        {expenseList.length === 0 && (
+          <p className="text-center text-gray-600">No expenses yet!</p>
+        )}
         {expenseList.map((expense) => (
           <div
             key={expense.id}
