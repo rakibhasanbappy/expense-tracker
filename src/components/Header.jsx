@@ -1,5 +1,5 @@
 // import React from 'react';
-import favicon from "../assets/image/favicon.svg";
+import logo from "../assets/image/logo.svg";
 
 export default function Header() {
   return (
@@ -7,7 +7,7 @@ export default function Header() {
       <nav>
         <div className="flex max-w-7xl items-center bg-[#F9FAFB] w-full justify-between py-1 mt-2 border px-4 rounded-md mx-auto">
           <div>
-            <img src={favicon} className="h-14" />
+            <img src={logo} className="h-14" />
           </div>
 
           <div className="hidden md:block">
